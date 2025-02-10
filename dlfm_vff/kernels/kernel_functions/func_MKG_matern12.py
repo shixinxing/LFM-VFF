@@ -98,23 +98,3 @@ def lfm_matern12_cross_cov(z_cos, t_T, a, b, gama, beta, lamda) -> Tensor:
     return torch.cat([mkg_cos_part, mkg_sin_part], dim=-2) / (beta + EPS)
 
 
-if __name__ == '__main__':
-    import time
-    from vffdeeplfm.kernels.kernel_functions.utils import test_lfm_frag_mkg
-
-    torch.set_default_dtype(torch.float64)
-
-    print(f"===== nu: 0.5 =====")
-    test_lfm_frag_mkg(lfm_matern12_cross_cov)
-
-    # s = time.time()
-    # for _ in range(2000):
-    #     test_lfm_frag(nu=0.5)
-    # e = time.time()
-    # print(f"Elapsed time: {e - s}")
-
-
-
-
-
-
