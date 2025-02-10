@@ -330,34 +330,4 @@ class DSVI_DeepGP(DeepGP):
         return Fmeans, Fvars, Fs
 
 
-if __name__ == "__main__":
-    from torch.utils.data import TensorDataset, DataLoader
-
-    in_dims, out_dims, n_test, S = 2, 3, 15, 44
-    Z_init = np.random.randn(5, 2)
-
-    model = DSVI_DeepGP(
-        in_dims, out_dims, in_dims, 2, X_running=None, Z_running=Z_init,
-        kernel_type='matern32',
-        ard=True, kernel_sharing_across_dims=True,
-        whitened='cholesky',
-        has_kernel_noise=True, with_concat=False
-    )
-
-    x_test = torch.randn(n_test, in_dims)
-    y_test = torch.randn(n_test, out_dims)
-    xy_ds = TensorDataset(x_test, y_test)
-    xy_loader = DataLoader(xy_ds, batch_size=n_test)
-
-    y_mean = torch.randn(1, out_dims)
-    y_std = torch.rand(1, out_dims)
-
-    # Though the samples at intermediate layers will be different,
-    # the output distributions are the same at initialization (zero mean, covariance is Kxx)
-    # Note that K(x, x) is diagonal when not full_cov and the diagonal entries has nothing to do with x.
-    rmse, mll = model.predict_measure(xy_loader, y_mean, y_std, S)
-    check_rmse, check_mll = model.predict_measure_check(xy_loader, y_mean, y_std, S=5)
-    print(rmse, mll, check_rmse, check_mll)
-
-
 

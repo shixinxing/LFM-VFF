@@ -81,17 +81,3 @@ def mixture_mean_and_var_1d(dist: MultitaskMultivariateNormal):
     return mixture_mean, mixture_var
 
 
-if __name__ == '__main__':
-    S, N = 10, 25
-    mean = torch.randn(N, S, 1)
-    covar = torch.rand(N, S, 1, 1)
-    dist = MultitaskMultivariateNormal(mean.transpose(-2, -3),
-                                       DiagLinearOperator(covar.transpose(-3, -4).squeeze(-1).squeeze(-1))
-                                       )
-
-    mixture_mean, mixture_covar = predict_mixture_mean_and_covar(mean, covar)
-    _mix_mean, _mix_covar = mixture_mean_and_var_1d(dist)
-
-    print(mixture_mean.squeeze(-1), mixture_covar.squeeze(-1).squeeze(-1))
-    print(_mix_mean, _mix_covar)
-
