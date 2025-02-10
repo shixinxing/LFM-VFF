@@ -1,4 +1,4 @@
-from gpytorch.kernels import ScaleKernel, MaternKernel
+from gpytorch.kernels import ScaleKernel
 
 from dlfm_vff.models.exact_lfm import ExactLFM1d
 from dlfm_vff.kernels.rff_matern_kernels import Matern_RFF_Kernel
