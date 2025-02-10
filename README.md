@@ -15,5 +15,6 @@ $$
 \mathbf{\phi}(x)  = [1, \cos(z_1(x-a)),\cdots,\cos(z_M(x-a)), \sin(z_1(x -a)),\cdots,\sin(z_M(x-a))],
 $$
 
+![basis](assets/basis_function.png)
 
 
