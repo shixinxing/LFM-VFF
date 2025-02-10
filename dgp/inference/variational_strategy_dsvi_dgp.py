@@ -98,7 +98,7 @@ class DSVI_DGP_UnWhitenedVariationalStrategy(_DSVI_DGP_VariationalStrategy):
             full_cov: bool = False,
             **kwargs
     ):
-        mean_x, mean_z, Kxx, Kzz, Kzx = self._get_matrix(  # ⚠️ still not using mean(Z)
+        mean_x, mean_z, Kxx, Kzz, Kzx = self._get_matrix(
             x, self.inducing_points, full_cov=full_cov  # to save computation by not using the broadcast Z
         )
         Kzz = Kzz.add_jitter(self.jitter_val)
@@ -155,7 +155,5 @@ class DSVI_DGP_WhitenedVariationalStrategy(_DSVI_DGP_VariationalStrategy):
         )
 
         return MVN
-
-
 
 
