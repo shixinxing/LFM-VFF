@@ -213,7 +213,7 @@ if __name__ == '__main__':
     parser.add_argument("--b", type=float, default=1.5, help="integral upper bound")
 
     parser.add_argument('--lr', type=float, default=0.01, help='learning rate')
-    parser.add_argument('--num_epochs', type=int, default=1000, help='number of training epochs')
+    parser.add_argument('--num_epochs', type=int, default=6000, help='number of training epochs')
     parser.add_argument('--display_epochs', type=int, default=1000, help='number of displaying epochs')
 
     parser.add_argument('--save_dir', type=str, default="tmp", help='save directory')
